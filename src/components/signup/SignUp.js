@@ -32,8 +32,6 @@ const SignUp = () => {
                         className="formInput"
                         required
                     />
-
-                    
                     {/* className="navbar-form-close" */}
                     <button type="submit" className="formButton">
                         SignUp
