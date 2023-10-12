@@ -1,11 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import { HashLink as Link } from 'react-router-hash-link';
+import { ThemeContext } from "../../contexts/theme";
 
 const Header = () => {
     const isActive = true;
+    const {appTheme,setAppTheme}=useContext(ThemeContext)
+    const toggleTheme = () =>{
+        setAppTheme(appTheme == 'dark'?'dark':'light' )
+    }
     return (
         <>
             <header className="">
@@ -40,6 +45,10 @@ const Header = () => {
                                     LIVE
                                 </Link>
                             </li>
+                            <div className="form-check form-switch mx-2">
+                                <input className="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" onClick={toggleTheme}/>
+                                <label className="form-check-label" >Dark Mode</label>
+                            </div>
                         </ul>
                     </nav>
 
@@ -57,8 +66,9 @@ const Header = () => {
                             <button className="navbar-form-close">
                                 <ion-icon name="close-circle-outline" />
                             </button>
+                            
                         </form>
-
+                        
                         <button className="navbar-search-btn">
                             <ion-icon name="search-outline" />
                         </button>
